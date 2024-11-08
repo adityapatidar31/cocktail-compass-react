@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 function HomeLayout() {
   return (
-    <div>
-      Home Layout
-      <Link to="/about">About</Link>
-    </div>
+    <>
+      <Navbar />
+      <Outlet />
+    </>
   );
 }
 
