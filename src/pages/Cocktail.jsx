@@ -1,8 +1,16 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, Navigate, useLoaderData } from "react-router-dom";
 import Wrapper from "../assets/wrappers/CocktailPage";
+import { useQuery } from "@tanstack/react-query";
+import { searchSingleCocktailQuery } from "./loaders/loaderSingleCocktail";
+import { toast } from "react-toastify";
 
 function Cocktail() {
-  const { drink } = useLoaderData();
+  const { id } = useLoaderData();
+  const { data: drink } = useQuery(searchSingleCocktailQuery(id));
+  if (!drink?.strDrink) {
+    toast.error("Drink not found");
+    return <Navigate to="/" />;
+  }
   const {
     strDrink: name,
     strDrinkThumb: image,
@@ -15,7 +23,6 @@ function Cocktail() {
     (key) => key.startsWith("strIngredient") && drink[key] != null
   );
   const ingredients = ingredientsKeys.map((ingredient) => drink[ingredient]);
-  console.log(ingredients);
   return (
     <Wrapper>
       <header>
