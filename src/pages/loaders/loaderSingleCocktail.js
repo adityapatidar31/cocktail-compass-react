@@ -4,6 +4,10 @@ const BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
 
 export const loader = async ({ params }) => {
   const { id } = params;
-  const res = await axios.get(`${BASE_URL}${id}`);
+  const res = await axios.get(`${BASE_URL}${id}s`);
+  if (!res.data)
+    throw new Error(
+      "Drink is not found, please try to look for different drink"
+    );
   return { id, drink: res.data.drinks[0] };
 };
