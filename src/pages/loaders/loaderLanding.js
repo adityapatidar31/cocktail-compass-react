@@ -6,7 +6,7 @@ export function searchCocktailsQuery(searchQuery) {
     queryKey: ["search", searchQuery || "all"],
     queryFn: async () => {
       const res = await axios.get(`${BASE_URL}${searchQuery || "a"}`);
-      const drinks = res.data.drinks.map((drink) => {
+      const drinks = res?.data?.drinks?.map((drink) => {
         const { idDrink, strDrink, strDrinkThumb, strAlcoholic, strGlass } =
           drink;
         return {
@@ -17,7 +17,7 @@ export function searchCocktailsQuery(searchQuery) {
           glass: strGlass,
         };
       });
-      return drinks;
+      return drinks || [];
     },
   };
 }

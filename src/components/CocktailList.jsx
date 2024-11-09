@@ -3,7 +3,7 @@ import CocktailCard from "./CocktailCard";
 
 /* eslint-disable react/prop-types */
 function CocktailList({ drinks }) {
-  if (!drinks) {
+  if (!drinks.length) {
     return <h4 style={{ textAlign: "center" }}>No result Found</h4>;
   }
   return (
