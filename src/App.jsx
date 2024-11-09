@@ -8,6 +8,7 @@ import {
   Newsletter,
 } from "./pages";
 import { loader as landingLoader } from "./pages/loaders/loaderLanding";
+import SinglePageError from "./pages/SinglePageError";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
         index: true,
         element: <Landing />,
         loader: landingLoader,
+        errorElement: <SinglePageError />,
       },
       {
         path: "/newsletter",
