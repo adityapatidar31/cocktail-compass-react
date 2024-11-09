@@ -1,6 +1,8 @@
-import { Form } from "react-router-dom";
+import { Form, useNavigation } from "react-router-dom";
 
 function Newsletter() {
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
   return (
     <Form className="form" method="POST">
       <h4 style={{ textAlign: "center", marginBottom: "2rem" }}>
@@ -16,7 +18,7 @@ function Newsletter() {
           id="name"
           className="form-input"
           required
-          defaultValue="lucky"
+          defaultValue="john"
         />
       </div>
       <div className="form-row">
@@ -29,7 +31,7 @@ function Newsletter() {
           id="lastName"
           className="form-input"
           required
-          defaultValue="patidar"
+          defaultValue="smith"
         />
       </div>
       <div className="form-row">
@@ -42,11 +44,15 @@ function Newsletter() {
           id="email"
           className="form-input"
           required
-          defaultValue="test@gmail.com"
+          defaultValue="test@test.com"
         />
       </div>
-      <button className="btn btn-block" style={{ marginTop: "0.5rem" }}>
-        submit
+      <button
+        className="btn btn-block"
+        style={{ marginTop: "0.5rem" }}
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? "Submitting ..." : "Submit"}
       </button>
     </Form>
   );
