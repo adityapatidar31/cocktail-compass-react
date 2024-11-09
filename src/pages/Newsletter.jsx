@@ -2,7 +2,7 @@ import { Form } from "react-router-dom";
 
 function Newsletter() {
   return (
-    <Form className="form">
+    <Form className="form" method="POST">
       <h4 style={{ textAlign: "center", marginBottom: "2rem" }}>
         our newsletter
       </h4>
@@ -15,6 +15,7 @@ function Newsletter() {
           name="name"
           id="name"
           className="form-input"
+          required
           defaultValue="lucky"
         />
       </div>
@@ -27,6 +28,7 @@ function Newsletter() {
           name="lastName"
           id="lastName"
           className="form-input"
+          required
           defaultValue="patidar"
         />
       </div>
@@ -39,6 +41,7 @@ function Newsletter() {
           name="email"
           id="email"
           className="form-input"
+          required
           defaultValue="test@gmail.com"
         />
       </div>
