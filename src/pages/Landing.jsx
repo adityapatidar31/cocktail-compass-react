@@ -3,10 +3,11 @@ import CocktailList from "../components/CocktailList";
 import SearchForm from "../components/SearchForm";
 
 function Landing() {
-  const { drinks } = useLoaderData();
+  const { drinks, searchQuery } = useLoaderData();
+
   return (
     <>
-      <SearchForm />
+      <SearchForm searchQuery={searchQuery} />
       <CocktailList drinks={drinks} />
     </>
   );
