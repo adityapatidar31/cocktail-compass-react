@@ -1,9 +1,13 @@
 import { useLoaderData } from "react-router-dom";
+import CocktailList from "../components/CocktailList";
 
 function Landing() {
-  const data = useLoaderData();
-  console.log(data);
-  return <div>Landing</div>;
+  const { drinks } = useLoaderData();
+  return (
+    <>
+      <CocktailList drinks={drinks} />
+    </>
+  );
 }
 
 export default Landing;
